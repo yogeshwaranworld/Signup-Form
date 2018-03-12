@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" >
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script>
+
+$(function(){
+	$('.btn-next').click(function(){
+		var getParent = $(this).parents('.section');
+		getParent.hide();
+		var indexFind = getParent.index();		
+		setNextActive(indexFind);
+		getParent.next('li').show();
+	});
+	$('.btn-back').click(function(){
+		var getParent = $(this).parents('.section');
+		var indexFind = getParent.index();
+		getParent.hide();	
+		setPrevActive(indexFind);
+		getParent.prev('li').show();
+	});
+	
+});
+function setNextActive(pos)
+{
+	var setPos = pos + 1;
+	console.log(setPos);	
+	$('.ui-progressbar li').removeClass('progressbar-active');
+	$('.ui-progressbar li').eq(setPos).addClass('progressbar-active');
+}
+function setPrevActive(pos)
+{
+	var setPos = pos - 1;
+	console.log(setPos);	
+	$('.ui-progressbar li').removeClass('progressbar-active');
+	$('.ui-progressbar li').eq(setPos).addClass('progressbar-active');
+}
+</script>
+
+</head>
+<body>
+
+<form class="ui-form">
+  <ul class="ui-progressbar">
+        <li class="progressbar-active">Enter Email</li>
+        <li>Social Profiles</li>
+        <li>Enter Verification Code</li>
+        <li>Create Password</li>
+        <li>Select Influencer</li>
+        <li>Create Profile</li>
+  </ul> 
+   <ul class="FormList">
+  <li class="section section-one">
+  	<h1>Heading</h1>
+    <input type="email" placeholder="Enter Your Email">
+    <button type="button" value="Next" class="btn-next">Next</button>
+  </li>
+  
+  <li class="section section-two" style="display:none">
+  	<h1>Heading</h1>
+    <input type="text" placeholder="Enter Your Name">
+    <button type="button" value="Next" class="btn-back">Back</button>
+    <button type="button" value="Next" class="btn-next">Next</button>
+  </li>
+  
+   <li class="section section-three" style="display:none">
+  	<h1>Heading</h1>
+    <input type="email" placeholder="Enter Otp">
+    <button type="button" value="Next" class="btn-back">Back</button>
+    <button type="button" value="Next" class="btn-next">Next</button>
+  </li>
+  
+  <li class="section section-four" style="display:none">
+  	<h1>Heading</h1>
+    <input type="Password" placeholder="Enter Password">
+    <input type="Password" placeholder="Re-Enter Password">
+    <button type="button" value="Next" class="btn-back">Back</button>
+    <button type="button" value="Next" class="btn-next">Next</button>
+  </li>
+  
+  <li class="section section-five" style="display:none">
+  	<h1>Heading</h1>
+    <input type="text" placeholder="Enter Influencer">   
+    <button type="button" value="Next" class="btn-back">Back</button>
+    <button type="button" value="Next" class="btn-next">Next</button>
+  </li>
+  
+  <li class="section section-six" style="display:none">
+  	<h1>Heading</h1>
+    <button type="button" value="Next" class="btn-create">Create</button>
+    <button type="button" value="Next" class="btn-back">Back</button>   
+  </li>
+  </ul>
+</form>
+</body>
+</html>
